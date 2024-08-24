@@ -112,19 +112,7 @@ class BookingController extends Controller
 
         return redirect()->route('booking.index')->with('success', 'Booking deleted successfully!');
     }
-    public function receiveCash(Request $request)
-{
-    $request->validate([
-        'booking_id' => 'required|exists:bookings,id',
-        'amount' => 'required|numeric|min:0',
-    ]);
 
-    $booking = Booking::findOrFail($request->booking_id);
-    // You can process the cash reception here, e.g., update the booking status or save the amount
-
-    return redirect()->route('booking.index')->with('success', 'Cash received successfully!');
-dd($request->booking_id);
-}
 
 
 }

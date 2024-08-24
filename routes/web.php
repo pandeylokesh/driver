@@ -55,7 +55,7 @@ Route::get('booking/edit/{id}', [BookingController::class, 'edit'])->name('booki
 Route::put('booking/update/{id}', [BookingController::class, 'update'])->name('booking.update');
 // In routes/web.php
 Route::delete('booking/delete/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
-Route::post('booking/receive_cash', [BookingController::class, 'receiveCash'])->name('booking.receive_cash');
+
 
 
 // partner
