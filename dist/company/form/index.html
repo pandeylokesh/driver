@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Company</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Driver Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Driver Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/form">Add Driver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/list">Driver List</a>
+                    </li>
+                    
+                    <!-- Company Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/company/form">Add Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/company/list">Company List</a>
+                    </li>
+
+                    <!-- Booking Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/booking/create">Add Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/booking/list">Booking List</a>
+                    </li>
+
+                    <!-- Partner Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/partner/create">Add Partner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/partner/list">Partner List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/login">Driver Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+            <h2>Add Company</h2>
+    <form action="http://localhost/company/store" method="POST">
+        <input type="hidden" name="_token" value="AIddsmxHxYgL73AB9ZRbaatEXc72gehdN01a0hV4" autocomplete="off">                
+        <div class="form-group">
+            <label for="company_name">Company Name</label>
+            <input type="text" class="form-control" id="company_name" name="company_name" value="" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company_email">Company Email</label>
+            <input type="email" class="form-control" id="company_email" name="company_email" value="" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company_contact">Company Contact</label>
+            <input type="text" class="form-control" id="company_contact" name="company_contact" value="" required>
+        </div>
+
+        <div class="form-group">
+            <label for="driver_id">Driver</label>
+            <select id="driver_id" name="driver_id" class="form-control" required>
+                <option value="">Select a Driver</option>
+                                    <option value="15" >
+                        san
+                    </option>
+                                    <option value="16" >
+                        mac
+                    </option>
+                                    <option value="17" >
+                        ik
+                    </option>
+                                    <option value="18" >
+                        RC Modular
+                    </option>
+                                    <option value="19" >
+                        RCwqd Modular
+                    </option>
+                                    <option value="20" >
+                        man
+                    </option>
+                            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    </main>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

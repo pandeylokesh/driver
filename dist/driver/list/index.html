@@ -1,0 +1,172 @@
+<!-- resources/views/driver/list.blade.php -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Driver Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Driver Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/form">Add Driver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/list">Driver List</a>
+                    </li>
+                    
+                    <!-- Company Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/company/form">Add Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/company/list">Company List</a>
+                    </li>
+
+                    <!-- Booking Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/booking/create">Add Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/booking/list">Booking List</a>
+                    </li>
+
+                    <!-- Partner Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/partner/create">Add Partner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/partner/list">Partner List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/driver/login">Driver Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+            <h2>Driver List</h2>
+        <a href="http://localhost/driver/form" class="btn btn-primary mb-3">Add New Driver</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>License Number</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Hourly Rate</th>
+               
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr>
+                    <td>15</td>
+                    <td>san</td>
+                    <td>1234567</td>
+                    <td>9971618629</td>
+                    <td>lokesh@gmail.com</td>
+                
+                    <td>12.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/15" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/15" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td>16</td>
+                    <td>mac</td>
+                    <td>mac</td>
+                    <td>9971618629</td>
+                    <td>mac@gmail.com</td>
+                
+                    <td>14.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/16" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/16" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td>17</td>
+                    <td>ik</td>
+                    <td>00000</td>
+                    <td>9971618629</td>
+                    <td>m@gmail.com</td>
+                
+                    <td>20.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/17" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/17" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td>18</td>
+                    <td>RC Modular</td>
+                    <td>123</td>
+                    <td>9971618629</td>
+                    <td>new@icabit.com</td>
+                
+                    <td>2.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/18" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/18" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td>19</td>
+                    <td>RCwqd Modular</td>
+                    <td>qwd</td>
+                    <td>9971618629</td>
+                    <td>nedew@icabit.com</td>
+                
+                    <td>12.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/19" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/19" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td>20</td>
+                    <td>man</td>
+                    <td>man</td>
+                    <td>9971618629</td>
+                    <td>man@gmail.com</td>
+                
+                    <td>123.00</td>
+                    
+                    <td>
+                        <a href="http://localhost/driver/edit/20" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="http://localhost/driver/delete/20" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                    </tbody>
+    </table>
+    </main>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
