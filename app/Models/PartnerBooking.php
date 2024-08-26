@@ -29,4 +29,7 @@ class PartnerBooking extends Model
     {
         return $this->belongsTo(Booking::class);
     }
+   
+    
+
 }

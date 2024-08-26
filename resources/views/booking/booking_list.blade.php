@@ -29,6 +29,7 @@
                 <th>Date</th>
                 <th>Reason</th>
                 <th>Total Time</th>
+                <th>Amount</th> <!-- New Column for Amount -->
                 <th>Actions</th>
                 <th>Add Amount</th>
             </tr>
@@ -49,28 +50,30 @@
                     <td>{{ $booking->date }}</td>
                     <td>{{ $booking->reason }}</td>
                     <td>{{ $booking->total_time }}</td>
-                    <td class="d-flex">
+                    <td>{{ $booking->amount }}</td> <!-- Display the Amount -->
+                    <td class="d-flex" style="gap:10px">
                         <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
                         <form action="{{ route('booking.destroy', $booking->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
-                  
+                    <td>
+                        <form action="{{ route('booking.addAmount', $booking->id) }}" method="POST">
+                            @csrf
+                            <input type="number" name="amount" class="form-control form-control-sm" placeholder="Enter amount">
+                            <button type="submit" class="btn btn-success btn-sm mt-2" style="
+    width: 173px;
+">Add Amount</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="15" class="text-center">No bookings found</td>
+                    <td colspan="16" class="text-center">No bookings found</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
-
-    <!-- Receive Cash Modal -->
-
 @endsection
-
-
-
-

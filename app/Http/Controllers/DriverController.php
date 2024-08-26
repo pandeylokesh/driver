@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Driver;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PartnerBooking;
 
@@ -122,17 +123,64 @@ class DriverController extends Controller
         // Redirect to login page or home page
         return redirect()->route('driver.login')->with('success', 'You have been logged out successfully.');
     }
+    public function showDriverBookings()
+{
+    $driver = Auth::guard('driver')->user();
+
+    // Fetch bookings related to the driver, including due amount
+    $bookings = PartnerBooking::with('booking')->where('driver_id', $driver->id)->get();
+
+    return view('driver.bookings', compact('bookings'));
+}
 
     // Show bookings for the logged-in driver
-    public function showDriverBookings()
+    // public function showDriverBookings()
+    // {
+    //     // Fetch the currently authenticated driver
+    //     $driver = Auth::guard('driver')->user();
+
+    //     // Fetch bookings related to the driver
+    //     $bookings = PartnerBooking::where('driver_id', $driver->id)->get();
+
+    //     // Pass the bookings to the view
+    //     return view('driver.bookings', compact('bookings'));
+    // }
+    public function addAmount(Request $request, $id)
     {
-        // Fetch the currently authenticated driver
-        $driver = Auth::guard('driver')->user();
-
-        // Fetch bookings related to the driver
-        $bookings = PartnerBooking::where('driver_id', $driver->id)->get();
-
-        // Pass the bookings to the view
-        return view('driver.bookings', compact('bookings'));
+        $request->validate([
+            'amount' => 'required|numeric|min:0',
+        ]);
+    
+        $amount = $request->input('amount');
+    
+        // Update the booking record
+        $booking = Booking::find($id);
+    
+        if ($booking) {
+            // Add the input amount to the existing paid amount
+            $booking->paid_amount += $amount;
+    
+            // Update the due amount
+            $booking->due_amount = $booking->amount - $booking->paid_amount;
+    
+            // Save the updated booking record
+            $booking->save();
+    
+            // Update the received cash for the partner booking
+            $partnerBooking = PartnerBooking::where('booking_id', $id)->first();
+            if ($partnerBooking) {
+                $partnerBooking->received_cash += $amount;
+                $partnerBooking->save();
+            }
+    
+            // Redirect to the driver bookings page with success message
+            return redirect()->route('driver.bookings')->with('success', 'Amount added successfully.');
+        }
+    
+        // Redirect to the driver bookings page with error message
+        return redirect()->route('driver.bookings')->with('error', 'Booking not found.');
     }
+    
+    
+
 }

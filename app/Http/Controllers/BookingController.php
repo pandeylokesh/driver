@@ -47,6 +47,7 @@ class BookingController extends Controller
             'date' => $request->date,
             'reason' => $request->reason,
             'total_time' => $totalTime,
+            'amount' => 0.00,  // Initialize the amount with 0
         ]);
 
         return redirect()->route('booking.index')->with('success', 'Booking created successfully!');
@@ -57,7 +58,7 @@ class BookingController extends Controller
         $bookings = Booking::all();
         return view('booking.booking_list', compact('bookings'));
     }
-
+    
     public function edit($id)
     {
         $booking = Booking::findOrFail($id);
@@ -113,6 +114,22 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('success', 'Booking deleted successfully!');
     }
 
+    public function addAmount(Request $request, $id)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:0',
+        ]);
 
-
+        $booking = Booking::find($id);
+    
+        if ($booking) {
+            // Add the input amount to the existing amount
+            $booking->amount = $booking->amount + $request->input('amount');
+            $booking->save();
+    
+            return redirect()->route('booking.index')->with('success', 'Amount added successfully.');
+        }
+    
+        return redirect()->route('booking.index')->with('error', 'Booking not found.');
+    }
 }

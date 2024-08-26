@@ -26,8 +26,15 @@ Route::middleware('auth:driver')->group(function () {
 // Route for login
 Route::get('driver/login', [DriverController::class, 'showLoginForm'])->name('driver.login');
 Route::post('driver/login', [DriverController::class, 'login'])->name('driver.login.submit');
-
+Route::get('/driver/bookings', [DriverController::class, 'showDriverBookings'])
+    ->name('driver.bookings');
     
+
+
+
+
+
+// company 
 
 
 Route::get('company/form', [CompanyController::class, 'create'])->name('company.create');
@@ -55,6 +62,8 @@ Route::get('booking/edit/{id}', [BookingController::class, 'edit'])->name('booki
 Route::put('booking/update/{id}', [BookingController::class, 'update'])->name('booking.update');
 // In routes/web.php
 Route::delete('booking/delete/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
+Route::post('/booking/{id}/addAmount', [BookingController::class, 'addAmount'])->name('booking.addAmount');
+
 
 
 
@@ -62,13 +71,31 @@ Route::delete('booking/delete/{id}', [BookingController::class, 'destroy'])->nam
 
 
 // Route to show the create partner form
+// Route to display the form for creating a new partner booking
 Route::get('partner/create', [PartnerController::class, 'create'])->name('partner.create');
-Route::post('partner/store', [PartnerController::class, 'store'])->name('partner.store');
-Route::get('partner/list', [PartnerController::class, 'index'])->name('partner.index');
-Route::get('partner/edit/{id}', [PartnerController::class, 'edit'])->name('partner.edit');
-Route::put('partner/update/{id}', [PartnerController::class, 'update'])->name('partner.update');
-Route::delete('/partner/delete/{id}', [PartnerController::class, 'destroy'])->name('partner.destroy');
 
+// Route to handle the submission of the partner booking creation form
+Route::post('partner/store', [PartnerController::class, 'store'])->name('partner.store');
+
+// Route to list all partner bookings
+Route::get('partner/list', [PartnerController::class, 'index'])->name('partner.index');
+
+// Route to display the form for editing a specific partner booking
+Route::get('partner/edit/{id}', [PartnerController::class, 'edit'])->name('partner.edit');
+
+// Route to handle the submission of the partner booking edit form
+Route::put('partner/update/{id}', [PartnerController::class, 'update'])->name('partner.update');
+
+// Route to delete a specific partner booking
+Route::delete('partner/delete/{id}', [PartnerController::class, 'destroy'])->name('partner.destroy');
+Route::post('/partner/{id}/addAmount', [PartnerController::class, 'addAmount'])->name('partner.addAmount');
+
+
+// Check for duplicates like this:
+ 
+
+    Route::post('/driver/{id}/add-amount', [DriverController::class, 'addAmount'])->name('driver.addAmount');
+    
 
 
 

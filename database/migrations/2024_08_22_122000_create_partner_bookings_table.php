@@ -13,6 +13,7 @@ class CreatePartnerBookingsTable extends Migration
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('driver_id')->constrained()->onDelete('cascade');
             $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            $table->decimal('received_cash', 8, 2)->default(0); // Add this line to track received cash
             $table->timestamps();
         });
     }
